@@ -1,0 +1,56 @@
+<xs:schema xmlns:aasg="http://stategeothermaldata.org/uri-gin/aasg/xmlschema/contours/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" targetNamespace="http://stategeothermaldata.org/uri-gin/aasg/xmlschema/contours/1.0" elementFormDefault="qualified">
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+	<xs:annotation>
+		<!-- This XSD document, including XML schema, indicates the content requested for  linear spatial features representing contour (isoline) data. These lines connect locations registering the same value for some variable. Examples include structure contour maps that represent lines of constant elevation on some surface, or gravity anomaly contours that represent lines of constant anomaly value. Fields in the content model will become XML elements in interchange documents for WFS simple features served by geothermal data web services.-->
+		<!--This XSD document was created on 2013-06-04 by Christy Caudill, AZGS.-->
+	</xs:annotation>
+	<xs:element name="ContourLine" type="aasg:ContourLineType" substitutionGroup="gml:_Feature"/>
+	<xs:complexType name="ContourLineType">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="contourURI">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="255"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="name" type="xs:string"/>
+					<xs:element name="description" type="xs:string" minOccurs="0"/>
+					<xs:element name="contourType" type="xs:string"/>
+					<xs:element name="contourValue" type="xs:double"/>
+					<xs:element name="units" type="xs:string"/>
+					<xs:element name="observationMethod" type="xs:string"/>
+					<xs:element name="positionalAccuracy" type="xs:string"/>
+					<xs:element name="RelatedResources" type="xs:string" minOccurs="0"/>
+					<xs:element name="source" type="xs:string"/>
+					<xs:element name="contourType_uri">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="255"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="specification_uri" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="255"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="metadata_uri" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="255"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="genericSymbolizer" type="xs:string"/>
+					<xs:element name="Shape" type="gml:MultiCurvePropertyType"/>
+					<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
